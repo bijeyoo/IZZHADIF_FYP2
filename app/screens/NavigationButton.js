@@ -6,6 +6,8 @@ import { useNavigation } from '@react-navigation/native';
 const NavigationButton = ({ screenName, title, style, textStyle }) => {
   const navigation = useNavigation();
 
+  
+
   return (
     <TouchableOpacity
       style={[styles.button, style]}

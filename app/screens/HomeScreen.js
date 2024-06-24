@@ -1,12 +1,19 @@
-// app/screens/HomeScreen.js
+// App.js
 import React, { useState } from 'react';
-import { View, StyleSheet, Text } from 'react-native';
+import {
+  StyleSheet,
+  View,
+  Text,
+  KeyboardAvoidingView,
+  Platform,
+} from 'react-native';
 import CustomInput from './CustomInput';
 import ImageField from './ImageField';
 import NavigationButton from './NavigationButton';
+import ScrollBar from './ScrollBar';
 
-const HomeScreen = () => {
-  const [form, setForm] = useState({ email: '', username: '' }); //all of this is because developer wants it to be sign in
+const App = () => {
+  const [form, setForm] = useState({ email: '', username: '', password: '' });
 
   const handleEmailChange = (email) => {
     setForm({ ...form, email });
@@ -16,45 +23,65 @@ const HomeScreen = () => {
     setForm({ ...form, username });
   };
 
+  const handlePasswordChange = (password) => {
+    setForm({ ...form, password });
+  };
+
   return (
-    <View style={styles.container}>
-      <ImageField
-        source={require('../assets/logo-red.jpg')}
-        style={styles.customImageStyle}
-        containerStyle={styles.customContainerStyle}
-      />
-      <ImageField
-        source={{ uri: 'https://static.wikia.nocookie.net/megamitensei/images/1/17/Gekkoukan_Emblem.png/revision/latest?cb=20150702014019' }}
-        style={{ width: 100, height: 150 }}
-      />
-      <CustomInput
-        label="Insert Email address"
-        placeholder="AdamJohn@example.com"
-        keyboardType="email-address"
-        value={form.email}
-        onChangeText={handleEmailChange}
-      /> 
-       <CustomInput
-        label="Insert Username"
-        placeholder="Username"
-        keyboardType="default"
-        value={form.username}
-        onChangeText={handleUsernameChange}
-      />
- 
-<CustomInput/>
-      <Text style={styles.title}>
-        Sign in to <Text style={{ color: '#075eec' }}>Organisation System</Text>
-      </Text>
-      <NavigationButton screenName="Details" title="Go to Details Screen" /> 
-       
-    </View>
+    <KeyboardAvoidingView
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+      style={{ flex: 1 }}
+    >
+      <ScrollBar contentContainerStyle={styles.scrollViewContent}>
+        <View style={styles.container}>
+          <ImageField
+            source={require('../assets/logo-red.jpg')}
+            style={styles.customImageStyle}
+            containerStyle={styles.customContainerStyle}
+          />
+          <ImageField
+            source={{ uri: 'https://static.wikia.nocookie.net/megamitensei/images/1/17/Gekkoukan_Emblem.png/revision/latest?cb=20150702014019' }}
+            style={{ width: 100, height: 150 }}
+          />
+          <CustomInput
+            label="Insert Email address"
+            placeholder="izzhadif@example.com"
+            keyboardType="email-address"
+            value={form.email}
+            onChangeText={handleEmailChange}
+          />
+          <CustomInput
+            label="Insert Username"
+            placeholder="Username"
+            keyboardType="default"
+            value={form.username}
+            onChangeText={handleUsernameChange}
+          />
+          <CustomInput
+            label="Insert Password"
+            placeholder="Password"
+            keyboardType="default"
+            value={form.password}
+            onChangeText={handlePasswordChange}
+            isPassword={true}
+          />
+          <Text style={styles.title}>
+            Sign in to <Text style={{ color: '#075eec' }}>Campus System</Text>
+          </Text>
+          <NavigationButton screenName="Details" title="Go to Details Screen" />
+        </View>
+      </ScrollBar>
+    </KeyboardAvoidingView>
   );
 };
 
 const styles = StyleSheet.create({
+  scrollViewContent: {
+    flexGrow: 1,
+    justifyContent: 'center',
+    paddingVertical: 20,
+  },
   container: {
-    flex: 1,
     padding: 20,
     justifyContent: 'center',
   },
@@ -71,4 +98,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default HomeScreen;
+export default App;
