@@ -6,7 +6,7 @@ import ImageField from './ImageField';
 import NavigationButton from './NavigationButton';
 
 const HomeScreen = () => {
-  const [form, setForm] = useState({ email: '', username: '' });
+  const [form, setForm] = useState({ email: '', username: '' }); //all of this is because developer wants it to be sign in
 
   const handleEmailChange = (email) => {
     setForm({ ...form, email });
@@ -29,22 +29,25 @@ const HomeScreen = () => {
       />
       <CustomInput
         label="Insert Email address"
-        placeholder="izzhadif@example.com"
+        placeholder="AdamJohn@example.com"
         keyboardType="email-address"
         value={form.email}
         onChangeText={handleEmailChange}
-      />
-      <CustomInput
+      /> 
+       <CustomInput
         label="Insert Username"
         placeholder="Username"
         keyboardType="default"
         value={form.username}
         onChangeText={handleUsernameChange}
       />
+ 
+<CustomInput/>
       <Text style={styles.title}>
-        Sign in to <Text style={{ color: '#075eec' }}>Campus System</Text>
+        Sign in to <Text style={{ color: '#075eec' }}>Organisation System</Text>
       </Text>
-      <NavigationButton screenName="Details" title="Go to Details Screen" />
+      <NavigationButton screenName="Details" title="Go to Details Screen" /> 
+       
     </View>
   );
 };
