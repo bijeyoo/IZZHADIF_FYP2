@@ -66,9 +66,9 @@ const App = () => {
             isPassword={true}
           />
           <Text style={styles.title}>
-            Sign in to <Text style={{ color: '#075eec' }}>Campus System</Text>
+            Sign in to <Text style={{ color: '#075eec' }}>Organisation System</Text>
           </Text>
-          <NavigationButton screenName="Details" title="Go to Details Screen" />
+          <NavigationButton screenName="Details" title="Sign In" />
         </View>
       </ScrollBar>
     </KeyboardAvoidingView>
