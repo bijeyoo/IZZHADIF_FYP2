@@ -16,7 +16,14 @@ const DetailsScreen = () => {
         name="Anaz Hariz"
         description="Chef"
         count={10}
-        backgroundColor="#E8F5E9"
+        backgroundColor="#ffd700"
+      />
+      <InfoCard
+        imageSource={require('../assets/ChefKumar.jpg')}
+        name="Kumar Ganeshan"
+        description="Chef"
+        count={5}
+        backgroundColor="#ff0000"
       />
       <Text style={styles.title}>User List</Text>
       {/* <NavigationButton screenName="Home" title="Go to Home Screen" /> */}
