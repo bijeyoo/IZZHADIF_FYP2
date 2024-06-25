@@ -1,15 +1,17 @@
-// DetailsScreen.js
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import NavigationButton from './NavigationButton';
 import BackButton from './BackButton';
 import InfoCard from './InfoCard';
+import BarChartComponent from './BarChartComponent';
 
-const DetailsScreen = () => {
+const DetailsScreen = ({ navigation }) => {
+
+  //const [data] = useState([4, 5, 8,10]); // Hardcoded bar chart data
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <BackButton />
+        <BackButton onPress={() => navigation.goBack()} />
       </View>
       <InfoCard
         imageSource={require('../assets/ChefAnaz.jpg')}
@@ -17,6 +19,7 @@ const DetailsScreen = () => {
         description="Chef"
         count={10}
         backgroundColor="#ffd700"
+        
       />
       <InfoCard
         imageSource={require('../assets/ChefKumar.jpg')}
@@ -25,8 +28,8 @@ const DetailsScreen = () => {
         count={5}
         backgroundColor="#ff0000"
       />
+      
       <Text style={styles.title}>User List</Text>
-      {/* <NavigationButton screenName="Home" title="Go to Home Screen" /> */}
     </View>
   );
 };
@@ -39,7 +42,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   header: {
-    width: '100%', //adjust back button
+    width: '100%',
     alignItems: 'flex-start',
     marginBottom: 20,
     paddingTop: 20,
