@@ -7,10 +7,10 @@ import {
   KeyboardAvoidingView,
   Platform,
 } from 'react-native';
-import CustomInput from './CustomInput';
-import ImageField from './ImageField';
-import NavigationButton from './NavigationButton';
-import ScrollBar from './ScrollBar';
+import CustomInput from '../functions/CustomInput';
+import ImageField from '../functions/ImageField';
+import NavigationButton from '../functions/NavigationButton';
+import ScrollBar from '../functions/ScrollBar';
 
 const App = () => {
   const [form, setForm] = useState({ email: '', username: '', password: '' });
@@ -41,7 +41,7 @@ const App = () => {
           />
           <ImageField
             source={{ uri: 'https://static.wikia.nocookie.net/megamitensei/images/1/17/Gekkoukan_Emblem.png/revision/latest?cb=20150702014019' }}
-            style={{ width: 100, height: 150 }}
+            style={{ width: 200, height: 150 }}
           />
           <CustomInput
             label="Insert Email address"

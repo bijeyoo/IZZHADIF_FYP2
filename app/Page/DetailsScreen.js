@@ -1,12 +1,22 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import BackButton from './BackButton';
-import InfoCard from './InfoCard';
-import BarChartComponent from './BarChartComponent';
+import BackButton from '../functions/BackButton';
+import InfoCard from '../functions/InfoCard';
+import BigInfoCard from '../functions/BigInfoCard';
 
 const DetailsScreen = ({ navigation }) => {
 
-  //const [data] = useState([4, 5, 8,10]); // Hardcoded bar chart data
+const items = [
+  {
+  img : require('../assets/ChefKumar.jpg'),
+  name : 'Chef Kumar',
+  description : ' Chef in Steak and Surf Restaurant at Impian Hotel',
+  inside: {
+    img:  require('../assets/cheflogo.jpg'),
+    name: '5 years experience',
+  }
+  }
+]
 
   return (
     <View style={styles.container}>
@@ -17,7 +27,7 @@ const DetailsScreen = ({ navigation }) => {
         imageSource={require('../assets/ChefAnaz.jpg')}
         name="Anaz Hariz"
         description="Chef"
-        count={10}
+        count={3}
         backgroundColor="#ffd700"
         
       />
@@ -28,6 +38,7 @@ const DetailsScreen = ({ navigation }) => {
         count={5}
         backgroundColor="#ff0000"
       />
+      <BigInfoCard items={items} />
       
       <Text style={styles.title}>User List</Text>
     </View>
