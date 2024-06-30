@@ -1,25 +1,52 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Alert } from 'react-native';
 import BackButton from '../functions/BackButton';
 import InfoCard from '../functions/InfoCard';
 import BigInfoCard from '../functions/BigInfoCard';
+import ScrollBar from '../functions/ScrollBar';
+import ChefKumar from '../Page/ChefKumar';
+
 
 const DetailsScreen = ({ navigation }) => {
 
-const items = [
+const items1 = [
   {
   img : require('../assets/ChefKumar.jpg'),
   name : 'Chef Kumar',
-  description : ' Chef in Steak and Surf Restaurant at Impian Hotel',
+  description : 'Head Chef of Steak and Surf Restaurant at Impian Hotel',
   inside: {
     img:  require('../assets/cheflogo.jpg'),
     name: '5 years experience',
   }
   }
-]
+];
+
+const items2 = [
+  {
+    img: require('../assets/ChefAnaz.jpg'),
+    name: 'Chef Anaz',
+    description: 'Expert Chef in Malay Cuisine and learning French Cuisine ',
+    inside: {
+      img: require('../assets/cheflogo.jpg'),
+      name: '2 years experience',
+    }
+  }
+];
+
+const handleCardPress1 = (item) => {
+
+   navigation.navigate('ChefKumar',{ item });
+};
+
+const handleCardPress2 = (item) => {
+  alert("You clicked on Chef Anaz profile!");
+};
+
+
 
   return (
-    <View style={styles.container}>
+    <ScrollBar contentContainerStyle={styles.scrollViewContent}>
+   
       <View style={styles.header}>
         <BackButton onPress={() => navigation.goBack()} />
       </View>
@@ -38,10 +65,14 @@ const items = [
         count={5}
         backgroundColor="#ff0000"
       />
-      <BigInfoCard items={items} />
       
-      <Text style={styles.title}>User List</Text>
-    </View>
+      <BigInfoCard  items={items1} onPress={handleCardPress1} />
+     
+      
+      <BigInfoCard items={items2} onPress={handleCardPress2} />
+      
+      </ScrollBar>
+    
   );
 };
 

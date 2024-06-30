@@ -34,11 +34,13 @@ const App = () => {
     >
       <ScrollBar contentContainerStyle={styles.scrollViewContent}>
         <View style={styles.container}>
-          <ImageField
+          
+        {/*   <ImageField
             source={require('../assets/logo-red.jpg')}
             style={styles.customImageStyle}
             containerStyle={styles.customContainerStyle}
-          />
+          /> */}
+          
           <ImageField
             source={{ uri: 'https://static.wikia.nocookie.net/megamitensei/images/1/17/Gekkoukan_Emblem.png/revision/latest?cb=20150702014019' }}
             style={{ width: 200, height: 150 }}
@@ -68,7 +70,8 @@ const App = () => {
           <Text style={styles.title}>
             Sign in to <Text style={{ color: '#075eec' }}>Organisation System</Text>
           </Text>
-          <NavigationButton screenName="Details" title="Sign In" />
+          <NavigationButton screenName="Details" title="Sign In" />    
+          
         </View>
       </ScrollBar>
     </KeyboardAvoidingView>

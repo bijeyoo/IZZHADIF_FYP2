@@ -2,16 +2,15 @@ import React from 'react';
 import {
   StyleSheet,
   SafeAreaView,
-  ScrollView,
   Text,
   TouchableOpacity,
   View,
   Image,
 } from 'react-native';
 
-const BigInfoCard = ({ items }) => {
+const BigInfoCard = ({ items, onPress }) => {
   return (
-      <View contentContainerStyle={styles.container}>
+      <View style={styles.container}>
 
         {items.map(
           ({ img, name, description, inside }, index) => {
@@ -21,9 +20,7 @@ const BigInfoCard = ({ items }) => {
             return (
               <TouchableOpacity
                 key={index}
-                onPress={() => {
-                  // handle onPress
-                }}>
+                onPress={() => onPress({ img, name, description, inside })}>
                 <View style={styles.card}>
                   <View style={styles.cardTop}>
                     <Image
@@ -43,14 +40,12 @@ const BigInfoCard = ({ items }) => {
                           {inside.name}
                         </Text>
                       </View>
-
                     </View>
                   </View>
 
                   <View style={styles.cardBody}>
                     <View style={styles.cardHeader}>
                       <Text style={styles.cardTitle}>{name}</Text>
-
                     </View>
 
                     <Text style={styles.cardDescription}>{description}</Text>
@@ -67,13 +62,21 @@ const BigInfoCard = ({ items }) => {
 const styles = StyleSheet.create({
   container: {
     padding: 24,
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
+  title: {
+    fontSize: 32,
+    fontWeight: '700',
+    color: '#1d1d1d',
+    marginBottom: 12,
   },
   /** Card */
   card: {
     padding: 12,
     borderRadius: 24,
     marginBottom: 24,
-    backgroundColor: '#48d1cc',
+    backgroundColor: '#87ceeb', //white
   },
   cardTop: {
     position: 'relative',
@@ -115,8 +118,10 @@ const styles = StyleSheet.create({
     color: '#222',
   },
   cardBody: {
+    height: 100,
     paddingVertical: 16,
-    paddingHorizontal: 12,
+    paddingHorizontal: 16,
+    overflow: 'hidden',
   },
   cardHeader: {
     flexDirection: 'row',
@@ -128,11 +133,6 @@ const styles = StyleSheet.create({
     fontSize: 19,
     fontWeight: '700',
     color: '#222',
-  },
-  cardDuration: {
-    fontSize: 16,
-    fontWeight: '700',
-    color: '#6a6bff',
   },
   cardDescription: {
     fontSize: 15,
